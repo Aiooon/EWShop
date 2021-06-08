@@ -1,3 +1,4 @@
+// 设置目录别名，防止路径过深
 // 起别名的时候需要借助 webpack
 // 在 vue 配置文件中中引入 webpack
 module.exports = {
