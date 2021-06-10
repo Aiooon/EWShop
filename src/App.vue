@@ -1,13 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view/>
+  <div id="nav">
+    <router-link class="tab-bar-item" to="/">
+      <div><i class="iconfont icon-shouye"></i></div>
+      <div>首页</div>
+    </router-link>
+
+    <router-link class="tab-bar-item" to="/category">
+      <div><i class="iconfont icon-fenlei"></i></div>
+      <div>分类</div>
+    </router-link>
+
+    <router-link class="tab-bar-item" to="/shopcart">
+      <div><i class="iconfont icon-gouwuchezhengpin"></i></div>
+      <div>购物车</div>
+    </router-link>
+
+    <router-link class="tab-bar-item" to="/profile">
+      <div><i class="iconfont icon-yonghu"></i></div>
+      <div>我的</div>
+    </router-link>
+  </div>
 </template>
 
 <style lang="scss">
 @import "assets/css/base.css";
+@import "assets/css/iconfont.css";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
