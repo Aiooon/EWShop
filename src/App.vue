@@ -42,7 +42,7 @@
   left: 0%;
   right: 0%;
   bottom: 0%;
-  box-shadow: 0 -3px 1px rgba($color: #000000, $alpha: 0.1);
+  box-shadow: 0 -3px 1px rgba($color: #000000, $alpha: 0.08);
 
   a {
     // font-weight: bold;

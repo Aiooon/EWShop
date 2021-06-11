@@ -1,23 +1,27 @@
 <template>
     <div>
-        <h1>首页</h1>
+        <nav-bar>
+            <template v-slot:default>图书商城</template>
+        </nav-bar>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
+import NavBar from 'components/common/navbar/NavBar.vue'
 
-            }
-        },
-        methods: {
-
-        },
-        components: {
+export default {
+    data() {
+        return {
 
         }
+    },
+    methods: {
+
+    },
+    components: {
+        NavBar 
     }
+}
 </script>
 
 <style scoped>
