@@ -10,14 +10,7 @@
 import NavBar from 'components/common/navbar/NavBar.vue'
 
 export default {
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-
-    },
+    name: 'Detail',
     components: {
         NavBar
     }
