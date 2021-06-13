@@ -12,43 +12,7 @@
 
         <tab-control @tabClick='tabClick' :titles="['热销', '新书', '精选']"></tab-control>
 
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
-        {{tabid}} <br>
+        <goods-list></goods-list>
 
     </div>
 </template>
@@ -57,6 +21,7 @@
 import TabControl from 'components/content/tabControl/TabControl'
 import NavBar from 'components/common/navbar/NavBar'
 import RecommendView from './ChildComps/RecommendView'
+import GoodsList from 'components/content/goods/GoodsList'
 import { getHomeAllData } from 'network/home'
 import { ref, reactive, onMounted } from 'vue'
 
@@ -91,6 +56,7 @@ export default {
         NavBar,
         RecommendView,
         TabControl,
+        GoodsList
     }
 }
 </script>
