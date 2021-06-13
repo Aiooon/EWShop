@@ -6,12 +6,55 @@
         <div class="banner">
             <img src="~assets/images/1.png" alt="">
         </div>
+
         <!-- 向子组件传数据 -->
         <recommend-view :recommends="recommends"></recommend-view>
+
+        <tab-control @tabClick='tabClick' :titles="['热销', '新书', '精选']"></tab-control>
+
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+        {{tabid}} <br>
+
     </div>
 </template>
 
 <script>
+import TabControl from 'components/content/tabControl/TabControl'
 import NavBar from 'components/common/navbar/NavBar'
 import RecommendView from './ChildComps/RecommendView'
 import { getHomeAllData } from 'network/home'
@@ -21,17 +64,25 @@ export default {
     name: 'Home',
 
     setup () {
+
+        let tabid = ref(0);
         const recommends = ref([]);
 
         onMounted( ()=>{
             // console.log(recommends);
             getHomeAllData().then(res=>{
-                console.log(res);
+                // console.log(res);
                 recommends.value = res.goods.data;
             })
         })
 
+        const tabClick = (index)=>{
+            tabid.value = index;
+        }
+
         return {
+            tabid,
+            tabClick,
             recommends
         }
     },
@@ -39,11 +90,11 @@ export default {
     components: {
         NavBar,
         RecommendView,
+        TabControl,
     }
 }
 </script>
 
-        RecommendView
 <style scoped>
 .banner img{
     width: 100%;
