@@ -47,6 +47,7 @@ export default {
     width: 100%;
     position: sticky;
     top: 44px;
+    z-index: 2;
     .tab-control-item {
         flex: 1;
         span {
