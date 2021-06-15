@@ -1,18 +1,6 @@
 <template>
     <div class="goods">
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
-        <goods-list-item></goods-list-item>
+        <goods-list-item v-for="item in goods" :product="item" :key="item.id"></goods-list-item>
     </div>
 </template>
 
@@ -20,6 +8,14 @@
 import GoodsListItem from './GoodsListItem'
 export default {
     name: "GoodsList",
+    props: {
+        goods: {
+            type: Array,
+            default() {
+                return []
+            }
+        }
+    },
     components: {
         GoodsListItem
     }

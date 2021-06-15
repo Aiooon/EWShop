@@ -1,17 +1,25 @@
 <template>
     <div class="goods-item">
-        <img src="~assets/images/11.png" alt="">
+        <img :src="product.cover_url" alt="">
         <div class="goods-info">
-            <p>title</p>
-            <span class="price"><small>¥</small>100</span>
-            <span class="collect"> 3</span>
+            <p>{{ product.title }}</p>
+            <span class="price"><small>¥</small>{{ product.price }}</span>
+            <span class="collect"> {{ product.collects_count }}</span>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "GoodsListItem"
+    name: "GoodsListItem",
+    props: {
+        product: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
+    }
 }
 </script>
 
@@ -23,7 +31,7 @@ export default {
     position: relative;
     img {
         width: 100%;
-        border-radius: 15px;
+        border-radius: 5px;
     }
 
     .goods-info {
@@ -33,12 +41,12 @@ export default {
         left: 0;
         right: 0;
         overflow: hidden;
-
+        text-align: center;
+        
         p {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            margin-top: 3px;
             margin-bottom: 3px;
         }
 
@@ -50,10 +58,11 @@ export default {
         .collect {
             position: relative;
         }
+
         .collect::before{
             content: '';
             position: absolute;
-            left: -13px;
+            left: -15px;
             width: 14px;
             height: 14px;
             top: -1px;
