@@ -9,9 +9,8 @@
         <div class="wrapper">
             <div class="content">
                 <div ref="banref">
-                    <div class="banner">
-                        <img src="~assets/images/1.png" alt="">
-                    </div>
+                    <home-swiper :banners="banners"></home-swiper>
+
                     <!-- 向子组件传数据 -->
                     <recommend-view :recommends="recommends"></recommend-view>
                 </div>
@@ -22,7 +21,7 @@
             </div>
         </div>
         
-
+        <back-top @bTop='bTop' v-show="isTabFixed"></back-top>
     </div>
 </template>
 
@@ -31,10 +30,13 @@ import TabControl from 'components/content/tabControl/TabControl'
 import NavBar from 'components/common/navbar/NavBar'
 import RecommendView from './ChildComps/RecommendView'
 import GoodsList from 'components/content/goods/GoodsList'
+import BackTop from 'components/common/backtop/BackTop.vue'
+import HomeSwiper from './ChildComps/HomeSwiper'
 import { getHomeAllData, getHomeGoods } from 'network/home'
 import { ref, reactive, onMounted, computed, watchEffect, nextTick } from 'vue'
 import BScroll from '@better-scroll/core'
 import Pullup from '@better-scroll/pull-up'
+
 // 注册插件
 BScroll.use(Pullup)
 
@@ -42,9 +44,10 @@ export default {
     name: 'Home',
 
     setup () {
-        let   isTabFixed = ref(false);
-        let   banref     = ref(null);
-        const recommends = ref([]);
+        let isTabFixed    = ref(false);
+        let isShowBackTop = ref(false);
+        let banref        = ref(null);
+        const recommends  = ref([]);
 
         // 声明商品列表数据模型
         const goods = reactive({
@@ -60,12 +63,13 @@ export default {
         })
 
         let bscroll = reactive({});
-
+        let banners = ref([]);
         onMounted( ()=>{
             // console.log(recommends);
             getHomeAllData().then(res=>{
                 // console.log(res);
                 recommends.value = res.goods.data;
+                banners.value = res.slides;
             })
 
             // 热销
@@ -100,7 +104,7 @@ export default {
                 console.log(banref.value.offsetHeight);
                 console.log(-position.y);
                 console.log((-position.y) > banref.value.offsetHeight);
-                isTabFixed.value = (-position.y) > banref.value.offsetHeight;
+                isShowBackTop = isTabFixed.value = (-position.y) > banref.value.offsetHeight;
             })
             
             // 上拉加载数据,触发pullingUp
@@ -140,15 +144,20 @@ export default {
             })
         })
 
+        const bTop = () => {
+            bscroll.scrollTo(0, 0, 500);
+        }
+
         return {
             isTabFixed,
+            isShowBackTop,
             banref,
             recommends,
             goods,
-            // currentType,
             showGoods,
             tabClick,
-            // bscroll
+            bTop,
+            banners
         }
     },
 
@@ -156,7 +165,9 @@ export default {
         NavBar,
         RecommendView,
         TabControl,
-        GoodsList
+        GoodsList,
+        BackTop,
+        HomeSwiper
     }
 }
 </script>
