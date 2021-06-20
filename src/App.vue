@@ -1,13 +1,13 @@
 <template>
-  <!-- <router-view/> -->
+  <router-view/>
   <!-- 添加缓存 -->
-  <router-view v-slot="{ Component }">
+  <!-- <router-view v-slot="{ Component }">
       <transition>
         <keep-alive>
           <component :is="Component" />
         </keep-alive>
       </transition>
-    </router-view>
+    </router-view> -->
 
   <div id="nav">
     <router-link class="tab-bar-item" to="/">
@@ -21,7 +21,11 @@
     </router-link>
 
     <router-link class="tab-bar-item" to="/shopcart">
-      <div class="icon"><i class="iconfont icon-gouwuchezhengpin"></i></div>
+      <div class="icon">
+        <van-badge :content="0" max="9">
+          <i class="iconfont icon-gouwuchezhengpin"></i>
+        </van-badge>
+      </div>
       <div>购物车</div>
     </router-link>
 
