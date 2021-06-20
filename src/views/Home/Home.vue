@@ -101,20 +101,20 @@ export default {
             //触发滚动事件
             bscroll.on('scroll', (position)=>{
                 // console.log(position.y)
-                console.log(banref.value.offsetHeight);
-                console.log(-position.y);
-                console.log((-position.y) > banref.value.offsetHeight);
+                // console.log(banref.value.offsetHeight);
+                // console.log(-position.y);
+                // console.log((-position.y) > banref.value.offsetHeight);
                 isShowBackTop = isTabFixed.value = (-position.y) > banref.value.offsetHeight;
             })
             
             // 上拉加载数据,触发pullingUp
             bscroll.on('pullingUp', ()=>{
-                console.log('load more...');
+                // console.log('load more...');
                 // bscroll.refresh();
                 const page = goods[currentType.value].page + 1;
                 getHomeGoods(currentType.value, page).then(res=>{
                     goods[currentType.value].list.push(...res.goods.data);
-                    goods[currentType.value].page++;
+                    goods[currentType.value].page += 1;
                 })
                 // 完成上拉，等数据请求完成，要将新数据展示出来
                 bscroll.finishPullUp();
@@ -145,7 +145,7 @@ export default {
         })
 
         const bTop = () => {
-            bscroll.scrollTo(0, 0, 500);
+            bscroll.scrollTo(0, 100, 500);
         }
 
         return {
