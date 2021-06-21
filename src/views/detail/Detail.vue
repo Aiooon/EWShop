@@ -15,16 +15,16 @@
             :desc="detail.description"
             :title="detail.title"
         >
-        <template #tags>
-            <van-tag plain type="danger">新书</van-tag>
-            <van-tag plain type="danger">推荐</van-tag>
-        </template>
-        <template #footer>
-            <!-- <van-button size="warning" @click="handleAddCart">加入购物车</van-button>
-            <van-button size="danger" @click="goToCart">立即购买</van-button> -->
-            <van-button size="warning">加入购物车</van-button>
-            <van-button size="danger">立即购买</van-button>
-        </template>
+            <template #tags>
+                <van-tag plain type="danger">新书</van-tag>
+                <van-tag plain type="danger">推荐</van-tag>
+            </template>
+            <template #footer>
+                <!-- <van-button size="warning" @click="handleAddCart">加入购物车</van-button>
+                <van-button size="danger" @click="goToCart">立即购买</van-button> -->
+                <van-button size="warning">加入购物车</van-button>
+                <van-button size="danger">立即购买</van-button>
+            </template>
         </van-card>
 
         <van-tabs v-model="active">
@@ -50,8 +50,8 @@ import { useRoute } from 'vue-router';
 import { ref, reactive, onMounted, toRefs } from 'vue';
 import { getDetail } from 'network/detail';
 import { addCart } from 'network/cart';
-import {Toast} from "vant";
-import {useStore} from 'vuex';
+import { Toast } from "vant";
+import { useStore } from 'vuex';
 
 export default {
     name: 'Detail',
@@ -101,5 +101,8 @@ export default {
 </script>
 
 <style scoped>
-
+.content >>> .img {
+    max-width: 100%;
+    height: auto;
+}
 </style>
