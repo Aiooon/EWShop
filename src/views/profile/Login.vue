@@ -44,23 +44,27 @@ import { reactive, toRefs } from 'vue';
 import { login } from 'network/user';
 import { Toast } from 'vant';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 
 export default {
     name: "Login",
     setup() {
         const router = useRouter();
+        const store = useStore();
         const userinfo = reactive({
             email: '',      // 123@123.com
             password: '',   // 123456
         });
 
-        const onSubmit = () => {
-            login(userinfo).then(res => {
+        const onSubmit = ()=>{
+            login(userinfo).then(res=>{
+                console.log(res);
                 Toast.success('登录成功');
                 //将token保存到本地Windows.localStorage  setItem(key, value) getItem(key, value)
                 window.localStorage.setItem('token', res.access_token);
-
+                // 在vuex isLogin中
+                store.commit('setIsLogin', true);
                 setTimeout(()=>{
                     router.go(-1);
                 }, 500);
@@ -70,7 +74,6 @@ export default {
             })
         }
         return {
-            router,
             onSubmit,
             ...toRefs(userinfo),
         }
