@@ -1,11 +1,13 @@
+import { Notify } from 'vant';
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store';
 const Home = () => import('../views/home/Home');
-const Category = () => import('../views/category/Category');
+const Login = () => import ('../views/profile/Login');
 const Detail = () => import('../views/detail/Detail');
 const Profile = () => import('../views/profile/Profile');
 const ShopCart = () => import('../views/shopcart/ShopCart');
 const Register = () => import('../views/profile/Register');
-const Login = () => import ('../views/profile/Login');
+const Category = () => import('../views/category/Category');
 
 const routes = [
   {
@@ -45,7 +47,8 @@ const routes = [
     name: 'ShopCart',
     component: ShopCart,
     meta: {
-      title: '图书商城-购物车'
+      title: '图书商城-购物车',
+      isAuthRequired: true
     }
   },
   {
@@ -53,7 +56,8 @@ const routes = [
     name: 'Profile',
     component: Profile,
     meta: {
-      title: '图书商城-个人中心'
+      title: '图书商城-个人中心',
+      isAuthRequired: true
     }
   },
   {
@@ -82,7 +86,12 @@ const router = createRouter({
 // 全局导航守卫，页面跳转时更新网页 title
 router.beforeEach((to, from, next) => {
   // todo 如果没有登录，在这里login
-  next();
+  if (to.meta.isAuthRequired && store.state.user.isLogin === false) {
+    Notify('您还未登录，请先登录');
+    return next('/login');
+  } else {
+    next();
+  }
   document.title = to.meta.title;
 })
 
