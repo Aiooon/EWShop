@@ -58,6 +58,7 @@ export default {
         });
 
         const onSubmit = ()=>{
+            console.log(userinfo);
             login(userinfo).then(res=>{
                 console.log(res);
                 Toast.success('登录成功');
