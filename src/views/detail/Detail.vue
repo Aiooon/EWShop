@@ -82,7 +82,8 @@ export default {
             addCart({goods_id:book.detail.id, num:1}).then(res=>{
                 if(res.status === 204|| res.status === 201){
                     Toast.success('添加成功');
-                    store.dispatch('updateCart');
+                    // 设置 store 中 cartCount
+                    store.dispatch('updateCart');   // actions 用 dispatch
                 }
             })
         }
@@ -93,7 +94,7 @@ export default {
             addCart({goods_id:book.detail.id, num:1}).then(res=>{
                 if(res.status === 204|| res.status === 201){
                     Toast.success('添加成功，显示购物车');
-                    store.dispatch('updateCart');
+                    // store.dispatch('updateCart')
                     router.push({path: '/shopcart'});
                 }
             })
