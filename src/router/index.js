@@ -8,7 +8,10 @@ const Profile = () => import('../views/profile/Profile');
 const ShopCart = () => import('../views/shopcart/ShopCart');
 const Register = () => import('../views/profile/Register');
 const Category = () => import('../views/category/Category');
-
+const Address = () => import('../views/profile/Address');
+const AddressEdit = () => import('../views/profile/AddressEdit');
+const CreateOrder = () => import('../views/order/CreateOrder');
+const OrderDetail = () => import('../views/order/OrderDetail');
 const routes = [
   {
     path: '/',
@@ -74,6 +77,42 @@ const routes = [
     component: Login,
     meta: {
       title: '用户登录'
+    }
+  },
+  {
+    path: '/address',
+    name: 'Address',
+    component: Address,
+    meta: {
+      title: '地址管理',
+      isAuthRequired: true
+    }
+  },
+  {
+    path: '/addressedit',
+    name: 'AddressEdit',
+    component: AddressEdit,
+    meta: {
+      title: '地址编辑',
+      isAuthRequired: true
+    }
+  },
+  {
+    path: '/createorder',
+    name: 'CreateOrder',
+    component: CreateOrder,
+    meta: {
+      title: '创建订单',
+      isAuthRequired: true
+    }
+  },
+  {
+    path: '/orderdetail',
+    name: 'OrderDetail',
+    component: OrderDetail,
+    meta: {
+      title:'图书兄弟-订单详情',
+      isAuthRequired:true
     }
   },
 ]
