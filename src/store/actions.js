@@ -1,5 +1,6 @@
 // 异步处理数据
 import {getCart} from "network/cart";
+
 const actions = {
     updateCart({commit}){
         getCart().then(res => {
@@ -8,4 +9,4 @@ const actions = {
     }
 }
 
-export default actions;
+export default actions

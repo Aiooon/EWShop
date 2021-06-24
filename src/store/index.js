@@ -4,15 +4,15 @@ import actions from './actions'
 import getters from './getters'
 
 const state = {
-  user: {
-    isLogin: window.localStorage.getItem('token') ? true : false,
+  user:{
+    isLogin:!!window.localStorage.getItem('token')
   },
-  cartCount: 0
+  cartCount:0
 }
 
 export default createStore({
   state,
-  getters,
-  actions,
   mutations,
+  actions,
+  getters
 })
