@@ -67,7 +67,7 @@ export default {
                 // 在vuex isLogin中
                 store.commit('setIsLogin', true);
                 setTimeout(()=>{
-                    router.go(-1);
+                    router.push({path:'/'});
                 }, 500);
 
                 userinfo.email='';
