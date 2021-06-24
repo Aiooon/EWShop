@@ -36,6 +36,20 @@
   </div>
 </template>
 
+<script>
+// 更新购物车数量
+import {onMounted} from 'vue';
+import {useStore} from 'vuex';
+export default {
+  setup() {
+    const store = useStore();
+    onMounted(()=>{
+      store.dispatch("updateCart")
+    })
+  }
+}
+</script>
+
 <style lang="scss">
 @import "assets/css/base.css";
 @import "assets/css/iconfont.css";
