@@ -10,6 +10,7 @@ const Register = () => import('../views/profile/Register');
 const Category = () => import('../views/category/Category');
 const Address = () => import('../views/profile/Address');
 const AddressEdit = () => import('../views/profile/AddressEdit');
+const Order = () => import('../views/order/Order');
 const CreateOrder = () => import('../views/order/CreateOrder');
 const OrderDetail = () => import('../views/order/OrderDetail');
 const routes = [
@@ -98,6 +99,15 @@ const routes = [
     }
   },
   {
+    path: '/order',
+    name: 'Order',
+    component: Order,
+    meta: {
+      title:'生成订单',
+      isAuthRequired:true
+    }
+  },
+  {
     path: '/createorder',
     name: 'CreateOrder',
     component: CreateOrder,
@@ -111,7 +121,7 @@ const routes = [
     name: 'OrderDetail',
     component: OrderDetail,
     meta: {
-      title:'图书兄弟-订单详情',
+      title:'订单详情',
       isAuthRequired:true
     }
   },
