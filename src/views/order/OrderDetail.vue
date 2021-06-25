@@ -207,9 +207,6 @@
         label {
           color: #999;
         }
-        span {
-
-        }
       }
     }
     .order-price {
@@ -221,9 +218,6 @@
         margin-bottom: 10px;
         label {
           color: #999;
-        }
-        span {
-
         }
       }
     }
